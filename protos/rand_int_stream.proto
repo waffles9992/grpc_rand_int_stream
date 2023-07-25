@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+service RandIntStream {
+    rpc GetRandIntStream(RandIntRequest) returns (stream RandIntReply) {}
+}
+
+message RandIntRequest {
+    int32 range = 1;
+}
+
+message RandIntReply {
+    int32 num = 1;
+}

@@ -1,0 +1,9 @@
+name: grpc_rand_int_stream
+description: A gRPC server that will return a stream that emits random ints
+version: 1.0.0
+
+environment:
+  sdk: '>=3.0.0'
+dependencies:
+  grpc: ^3.2.3
+  protobuf: ^3.0.0
