@@ -8,7 +8,7 @@ Future<void> main(List<String> args) async {
       port: 8080,
       options:
           const ChannelOptions(credentials: ChannelCredentials.insecure()));
-  stub = RandIntStreamClient(channel, options: CallOptions(timeout: Duration(seconds: 30)));
+  stub = RandIntStreamClient(channel, options: CallOptions(timeout: Duration(minutes: 10)));
 
   try {
     ResponseStream<RandIntReply> replyStream = await stub.getRandIntStream(RandIntRequest()..range = 20);

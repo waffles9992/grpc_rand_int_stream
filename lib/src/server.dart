@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:math';
 
 import 'package:grpc/grpc.dart' as grpc;
@@ -14,16 +15,12 @@ class RandIntStreamService extends RandIntStreamServiceBase {
   @override
   Stream<RandIntReply> getRandIntStream(ServiceCall call, RandIntRequest request) async* {
     const numRandInts = 1000;
-    const interval = 1000;
+    const Duration intervalDuration = Duration(seconds: 5);
     int numsRemaining = numRandInts;
     while (numsRemaining > 0) {
-      for (var i = 0; i <= interval; i++) {
-        if (i == interval) {
-          i = 0;
-          numsRemaining--;
-          yield RandIntReply()..num = Random().nextInt(request.range);
-        }
-      }
+      await Future.delayed(intervalDuration);
+      numsRemaining--;
+      yield RandIntReply()..num = Random().nextInt(request.range);
     }
   }
 }
